@@ -1,0 +1,22 @@
+<!---Gestione colore attraverso la classe-->
+<div class="container">
+<div [ngClass]="{
+  'bg-warning': post.type == 'news',
+  'bg-info': post.type == 'education',
+  'bg-dark text-white': post.type == 'politic'
+}" class="card mt-3" *ngFor="let post of posts">
+  <div class="card-header">
+    {{post.id}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.body}}</p>
+    <a class="btn btn-danger" *ngIf="post.active"
+      (click)="changeActive(post.id, post)">Disattiva</a>
+    <a class="btn btn-success" *ngIf="!post.active">Attiva</a>
+    <a class="btn btn-danger" *ngIf="post.active"
+  (click)="elimina(post.id)">Elimina</a>
+  </div>
+</div>
+</div>
+
